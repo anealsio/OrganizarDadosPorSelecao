@@ -38,33 +38,34 @@ public class TrabalhoED2 {
             int tamanho = Array.getLength(textoDividido);
             System.out.println(tamanho);         
             
-            String unicos[] = new String[textoDividido.length];
-            int qtd = 0;
+            String palavrasUnicas[] = new String[textoDividido.length];
+            int quantidade = 0;
             for( int i = 0 ; i < textoDividido.length ; i++ ) {
                 boolean existe = false;
-                for( int j = 0 ; j < qtd ; j++ ) {
-                    if(unicos[ j ].equals(textoDividido[ i ])) {    
-                        System.out.println("entrou if");
+                for( int j = 0 ; j < quantidade ; j++ ) {
+                    if(palavrasUnicas[ j ].equals(textoDividido[ i ])) {    
                         existe = true;
                         palavrasIguais++;
                         break;
                     }
                 }
                 if( !existe ) {
-                    unicos[ qtd++ ] = textoDividido[ i ]; 
+                    palavrasUnicas[ quantidade++ ] = textoDividido[ i ]; 
                 }              
             }
             
-            unicos = Arrays.copyOf( unicos , qtd );
-            for ( int i = 0 ; i < unicos.length ; i++ ){
-                palavras.add(i,unicos[i]);
+            
+            
+            palavrasUnicas = Arrays.copyOf( palavrasUnicas , quantidade );
+            for ( int i = 0 ; i < palavrasUnicas.length ; i++ ){
+                palavras.add(i,palavrasUnicas[i]);
             } 
             
             
-            System.out.println("numero de palavas: " + unicos.length);
+            System.out.println("numero de palavas: " + palavrasUnicas.length);
             System.out.println("palavras iguais: " + palavrasIguais);
             int i = 0;
-            while ( i < unicos.length ){
+            while ( i < palavrasUnicas.length ){
                 System.out.println(palavras.get(i));  
                 i++;
             }
