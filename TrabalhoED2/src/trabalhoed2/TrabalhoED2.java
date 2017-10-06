@@ -14,7 +14,7 @@ public class TrabalhoED2 {
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
-                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED2.txt"), "ISO-8859-1"))){
+                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED23.txt"), "ISO-8859-1"))){
             
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
@@ -47,14 +47,31 @@ public class TrabalhoED2 {
             } 
             String[] textoDefinitivo = palavras.toArray ( new String [palavras.size()] );
             
+            tamanho = Array.getLength(textoDefinitivo);
+            
             System.out.println("numero de palavas: " + tamanho);
             System.out.println("palavras iguais: " + palavrasIguais);
-            int i = 0;
-            while ( i < palavras.size() ){
-                System.out.println(textoDefinitivo[i]);  
-                i++;
+           
+            for ( int i = 0 ; i < palavras.size() ; i++ )
+                System.out.println(textoDefinitivo[i]); 
+            
+            
+            /*
+            System.out.println(tamanho);
+            int posicaoMenor = 0;
+            for (int i = 0 ; i < (tamanho--) ; i++ ){
+                System.out.println(i);
+                if( ( textoDefinitivo[i].compareTo(textoDefinitivo[i++]) < 0 ) ){
+                    System.out.println("entrou if: " + textoDefinitivo[i] + " e " + textoDefinitivo[i++]);
+                    posicaoMenor = i;
+                } else {
+                    System.out.println("entrou else: " + textoDefinitivo[i] + " e " + textoDefinitivo[i++]);
+                    posicaoMenor = i++;
+                }
+                
             }
             
+            //*/            
             
             //pular linha .newLine();
             //escreverArquivoResposta.write(texto);            
