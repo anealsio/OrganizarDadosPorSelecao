@@ -10,8 +10,7 @@ public class TrabalhoED2 {
     public static void main(String[] args) {        
         File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\RespostaTrabalhoED2.txt");
         String texto = new String();        
-        //int indiceigual=0;
-        ArrayList<String> palavras = new ArrayList<String>();
+        Set<String> palavras = new HashSet<>();
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
@@ -20,12 +19,7 @@ public class TrabalhoED2 {
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
             texto = texto.toLowerCase();
-            int palavrasiguais = 0;
-            int indiceIgual1 = 0;
-            int indiceIgual2 = 0;
-            int esseNumeroIgual = 1;
-            int numeroFinal = 100;
-            String palavraAux = new String();
+            int palavrasIguais = 0;
             int indicesIguais[] = new int[1000];
             Arrays.fill(indicesIguais, -1);
             
@@ -43,39 +37,21 @@ public class TrabalhoED2 {
             
             int tamanho = Array.getLength(textoDividido);
             System.out.println(tamanho);
-            /*
-            for ( int i = 0 ; i < tamanho ; i++ ){
-                palavras.add(i,textoDividido[i]);
-            } 
-            //*/
-            //*
             
-            String copia[] = new String[textoDividido.length];
-            int quantidade = 0;
-            for( int i = 0 ; i < textoDividido.length ; i++ ) {
-                boolean existe = false;
-                for( int j = 0 ; j < quantidade ; j++ ) {
-                if( copia[ j ] == textoDividido[ i ] ) {
-                    existe = true;
-                    break;
+            for ( int i = 0 ; i < tamanho ; i++ ){
+                if (palavras.add(textoDividido[i]) == false ){
+                    tamanho--;
+                    palavrasIguais++;
                 }
-                if( !existe ) {
-                copia[ quantidade++ ] = textoDividido[ i ];            
-            }
-            }
-            }
-            copia = Arrays.copyOf( copia , quantidade );
-            for ( int i = 0 ; i < copia.length ; i++ ){
-                palavras.add(i,copia[i]);
+                else palavras.add(textoDividido[i]);
             } 
-            //*/
-            //textoDividido = texto.split(",");
-            //textoDividido = texto.split(".");
+            String[] textoDefinitivo = palavras.toArray ( new String [palavras.size()] );
+            
             System.out.println("numero de palavas: " + tamanho);
-            System.out.println("palavras iguais: " + palavrasiguais);
+            System.out.println("palavras iguais: " + palavrasIguais);
             int i = 0;
-            while ( i < copia.length ){
-                System.out.println(palavras.get(i));  
+            while ( i < palavras.size() ){
+                System.out.println(textoDefinitivo[i]);  
                 i++;
             }
             
