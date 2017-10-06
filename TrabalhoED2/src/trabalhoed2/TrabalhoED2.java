@@ -40,17 +40,17 @@ public class TrabalhoED2 {
             
             String palavrasUnicas[] = new String[textoDividido.length];
             int quantidade = 0;
-            for( int i = 0 ; i < textoDividido.length ; i++ ) {
+            for (String textoDividido1 : textoDividido) {
                 boolean existe = false;
-                for( int j = 0 ; j < quantidade ; j++ ) {
-                    if(palavrasUnicas[ j ].equals(textoDividido[ i ])) {    
+                for (int j = 0; j < quantidade; j++) {
+                    if (palavrasUnicas[ j ].equals(textoDividido1)) {    
                         existe = true;
                         palavrasIguais++;
                         break;
                     }
                 }
-                if( !existe ) {
-                    palavrasUnicas[ quantidade++ ] = textoDividido[ i ]; 
+                if (!existe) {
+                    palavrasUnicas[ quantidade++ ] = textoDividido1;
                 }              
             }
             
