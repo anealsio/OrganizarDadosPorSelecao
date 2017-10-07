@@ -6,15 +6,22 @@ import java.util.*;
 import java.util.logging.*;
 
 public class TrabalhoED2 {
-    public static String converte(String text) { 
+    public static String arrumarTextoParaCorte(String text) { 
             return text.replaceAll("[ãâàáä]", "a")   
-	                .replaceAll("[êèéë]", "e")   
+	                //.replaceAll("[êèéë]", "e")   
 	                .replaceAll("[îìíï]", "i")   
 	                .replaceAll("[õôòóö]", "o")   
 	                .replaceAll("[ûúùü]", "u")     
 	                .replace('ç', 'c')   
-	                .replace('ñ', 'n')  
-	                .replaceAll("!", "");
+	                .replace('ñ', 'n')
+                        .replace(",","")
+                        .replace(".","")
+                        .replace(":","")
+                        .replace(";","")
+                        .replace("!","")
+                        .replace("\"","")
+                        .replace("\'","")
+                        .replace("\\","");
     }   
     
     public static void trocarComMenor(String [] palavrasUnicas, int menorPalavra, int palavraDaVez){
@@ -48,7 +55,7 @@ public class TrabalhoED2 {
             int palavrasIguais = 0;
             
             System.out.println(texto);
-            
+            /*
             texto = texto.replace(",","");
             texto = texto.replace(".","");
             texto = texto.replace(":","");
@@ -57,9 +64,8 @@ public class TrabalhoED2 {
             texto = texto.replace("\"","");
             texto = texto.replace("\'","");
             texto = texto.replace("\\","");
-            texto = texto.replace("!","");
-            
-            texto = converte(texto);
+            //*/
+            texto = arrumarTextoParaCorte(texto);
             
             String textoDividido[] = texto.split(" ");
             
