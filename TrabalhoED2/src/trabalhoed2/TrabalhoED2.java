@@ -8,7 +8,7 @@ import java.util.logging.*;
 public class TrabalhoED2 {
     public static String arrumarTextoParaCorte(String text) { 
             return text.replaceAll("[ãâàáä]", "a")   
-	                //.replaceAll("[êèéë]", "e")   
+	                .replaceAll("[êèéë]", "e")   
 	                .replaceAll("[îìíï]", "i")   
 	                .replaceAll("[õôòóö]", "o")   
 	                .replaceAll("[ûúùü]", "u")     
