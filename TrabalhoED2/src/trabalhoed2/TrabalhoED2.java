@@ -6,28 +6,31 @@ import java.util.*;
 import java.util.logging.*;
 
 public class TrabalhoED2 {
+    public static String converte(String text) { 
+            return text.replaceAll("[ãâàáä]", "a")   
+	                .replaceAll("[êèéë]", "e")   
+	                .replaceAll("[îìíï]", "i")   
+	                .replaceAll("[õôòóö]", "o")   
+	                .replaceAll("[ûúùü]", "u")     
+	                .replace('ç', 'c')   
+	                .replace('ñ', 'n')  
+	                .replaceAll("!", "");
+    }   
     
     public static void trocarComMenor(String [] palavrasUnicas, int menorPalavra, int palavraDaVez){
         String palavraAux = new String();
         palavraAux = palavrasUnicas[menorPalavra];
         palavrasUnicas[menorPalavra] = palavrasUnicas[palavraDaVez];
         palavrasUnicas[palavraDaVez] = palavraAux; 
-        //if ( palavraDaVez < palavrasUnicas.length ){
-            palavraDaVez++;
-        //}        
     }
     
-    public static int procurarMenor(String [] palavrasUnicas, int menorPalavra){        
-            for ( int i = 0 ; i < (palavrasUnicas.length-1) ; i ++ ){
-                //System.out.println("entroufor");
-                if ( palavrasUnicas[i].compareTo( palavrasUnicas[menorPalavra] ) < 0 ){
-                    System.out.println("entrou if: " + palavrasUnicas[i] + " e "+ palavrasUnicas[i+1]);
-                    menorPalavra = i;                    
-                }
+    public static int procurarMenor(String [] palavrasUnicas, int menorPalavra,int palavraDaVez){        
+        for ( int i = palavraDaVez ; i < (palavrasUnicas.length-1) ; i ++ ){
+            if ( palavrasUnicas[i].compareTo( palavrasUnicas[menorPalavra] ) < 0 ){
+                menorPalavra = i;                    
             }
-            
-        System.out.println(menorPalavra);            
-            return menorPalavra;
+        }          
+        return menorPalavra;
     }
     
     public static void main(String[] args) {        
@@ -44,9 +47,6 @@ public class TrabalhoED2 {
             texto = texto.toLowerCase();
             int palavrasIguais = 0;
             
-            int indicesIguais[] = new int[1000];
-            Arrays.fill(indicesIguais, -1);
-            
             System.out.println(texto);
             
             texto = texto.replace(",","");
@@ -56,6 +56,10 @@ public class TrabalhoED2 {
             texto = texto.replace("!","");
             texto = texto.replace("\"","");
             texto = texto.replace("\'","");
+            texto = texto.replace("\\","");
+            texto = texto.replace("!","");
+            
+            texto = converte(texto);
             
             String textoDividido[] = texto.split(" ");
             
@@ -93,7 +97,9 @@ public class TrabalhoED2 {
             
             int menorPalavra = 0;
             int palavraDaVez = 0;
-            do {  
+            
+            while ( palavraDaVez != palavrasUnicas.length ){  
+                /*
                 //Procurando menor palavra
                 for ( int i = palavraDaVez ; i < (palavrasUnicas.length-1) ; i ++ ){
                 //System.out.println("entroufor");
@@ -111,16 +117,21 @@ public class TrabalhoED2 {
                 palavrasUnicas[menorPalavra] = palavrasUnicas[palavraDaVez];
                 palavrasUnicas[palavraDaVez] = palavraAux;         
                 palavraDaVez++;
-                //menorPalavra = procurarMenor(palavrasUnicas,menorPalavra);
-               // System.out.println(menorPalavra);
-                //trocarComMenor(palavrasUnicas,menorPalavra,palavraDaVez);                
-            } while ( palavraDaVez != palavrasUnicas.length );
-            System.out.println("menor : "+menorPalavra);
-            System.out.println("palavra da vez: " + palavraDaVez);
+                //*/
+                //*
+                menorPalavra = procurarMenor(palavrasUnicas,menorPalavra,palavraDaVez);
+                
+                //System.out.println("Menor Palavra: " + palavrasUnicas [ menorPalavra]);             
+               
+                trocarComMenor(palavrasUnicas,menorPalavra,palavraDaVez);
+                palavraDaVez++;
+                //*/
+                
+            }
             //System.out.println("menor palavra de todas: " + palavrasUnicas[menorPalavra]);  
                    
             //*/
-            /*
+            //*
             for ( int i = 0 ; i < palavrasUnicas.length ; i++ )
                 palavras.add(i,palavrasUnicas[i]);
              
