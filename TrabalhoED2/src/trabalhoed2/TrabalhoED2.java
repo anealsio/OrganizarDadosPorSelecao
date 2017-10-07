@@ -6,7 +6,18 @@ import java.util.*;
 import java.util.logging.*;
 
 public class TrabalhoED2 {
-
+    
+    public static String[] selecao(String[] palavrasUnicas ){
+        int menorPalavra = 0;
+        int palavraDaVez = 0;
+        while ( palavraDaVez != palavrasUnicas.length ) {  
+            menorPalavra = procurarMenor(palavrasUnicas,menorPalavra,palavraDaVez);
+            trocarComMenor(palavrasUnicas,menorPalavra,palavraDaVez); 
+            palavraDaVez++;                
+        } 
+        return palavrasUnicas;
+    }
+    
     public static String arrumarSinais(String texto) { 
         return texto.replaceAll("[ãâàáä]", "a")   
                     .replaceAll("[êèéë]", "e")   
@@ -115,46 +126,12 @@ public class TrabalhoED2 {
                     palavrasUnicas[j] = palavrasUnicas[j].concat("a");
                     //System.out.println(palavrasUnicas[j]);
                 }
-            }
-            //*
-            
-            
-            
-            //*/
-            //System.out.println("numero de palavas: " + palavrasUnicas.length);
-            //System.out.println("palavras iguais: " + palavrasIguais);
-            
-            
+            }           
                         
-            //*
+            //aqui
+            palavrasUnicas = selecao(palavrasUnicas);
             
-            int menorPalavra = 0;
-            int palavraDaVez = 0;
-            while ( palavraDaVez != palavrasUnicas.length ) {  
-                //Procurando menor palavra
-                /*
-                for ( int i = palavraDaVez ; i < (palavrasUnicas.length-1) ; i ++ ){
-                //System.out.println("entroufor");
-                    if ( palavrasUnicas[i].compareTo( palavrasUnicas[menorPalavra] ) < 0 ){
-                        //System.out.println("entrou if: " + palavrasUnicas[i] + " e "+ palavrasUnicas[i+1]);
-                        menorPalavra = i;                    
-                    }
-                }
-                
-                System.out.println("Menor Palavra: " + palavrasUnicas [ menorPalavra]);
-                
-                 //trocando com a primeira palavra
-                String palavraAux = new String();
-                palavraAux = palavrasUnicas[menorPalavra];
-                palavrasUnicas[menorPalavra] = palavrasUnicas[palavraDaVez];
-                palavrasUnicas[palavraDaVez] = palavraAux;         
-                //*/
-                menorPalavra = procurarMenor(palavrasUnicas,menorPalavra,palavraDaVez);
-                //////////System.out.println("Menor Palavra: " + palavrasUnicas [ menorPalavra]);
-                trocarComMenor(palavrasUnicas,menorPalavra,palavraDaVez); 
-                palavraDaVez++;
-                
-            } 
+            //Trocando palavras com acento
             for ( int i = 0 ; i < armazenarTodasPalavras.length ; i+=2){
                 for ( int z = 0 ; z < palavrasUnicas.length ; z++){
                     j = i;
@@ -165,27 +142,12 @@ public class TrabalhoED2 {
                 }
             }
             
+            //Escrevendo lista no terminal
             for(int i = 0 ; i < palavrasUnicas.length ; i++){
                 System.out.println(palavrasUnicas[i]);
             }
             
-            //for ( int i = 0 ; i < armazenar ){
-                
-            //}            
-            
-            //System.out.println("menor : "+menorPalavra);
-            //System.out.println("palavra da vez: " + palavraDaVez);
-            //System.out.println("menor palavra de todas: " + palavrasUnicas[menorPalavra]);  
-                   
-            //*/
-            /*
-            for ( int i = 0 ; i < palavrasUnicas.length ; i++ )
-                palavras.add(i,palavrasUnicas[i]);
-             
-            for( int i = 0 ; i < palavrasUnicas.length ; i++ )
-                System.out.println(palavras.get(i));
-            //*/
-            //pular linha .newLine();
+            //Escrevendo no arquivo de Resposta:
             escreverArquivoResposta.write("Texto com "+textoDividido.length+" palavras.");
             escreverArquivoResposta.newLine();
             escreverArquivoResposta.write(palavrasIguais+" palavras repetidas.");
