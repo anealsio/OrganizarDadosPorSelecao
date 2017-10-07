@@ -1,7 +1,6 @@
 package trabalhoed2;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.logging.*;
 
@@ -73,12 +72,10 @@ public class TrabalhoED2 {
             texto = texto.toLowerCase();
             int palavrasIguais = 0;
             
-            System.out.println(texto);
+            //arrumando texto e separando as palavras em um array
             texto = tirarPontuacao(texto);
-            String textoDividido[] = texto.split(" ");
+            String textoDividido[] = texto.split(" ");          
             
-            
-            System.out.println(Array.getLength(textoDividido));         
             // tirar palavras repetidas
             String palavrasUnicas[] = new String[textoDividido.length];
             int quantidade = 0;
@@ -94,19 +91,20 @@ public class TrabalhoED2 {
                 if (!existe) {
                     palavrasUnicas[ quantidade++ ] = textoDividido1;
                 }              
-            }
-            
+            }            
             palavrasUnicas = Arrays.copyOf( palavrasUnicas , quantidade );
             
+            //Separando Palavras com acento
             String armazenarTodasPalavras[] = new String[(palavrasUnicas.length * 2)]; 
             String palavrasUnicasComSinal[] = new String [ quantidade ];
             palavrasUnicasComSinal = Arrays.copyOf( palavrasUnicas , quantidade );
             
+            //Tirando os acentos do array que sera analisado
             for( int i = 0 ; i < palavrasUnicasComSinal.length ; i++ ){
-                palavrasUnicas [i] = arrumarSinais(palavrasUnicas[i]); 
-                //System.out.println(palavrasUnicasComSinal[i]);                
+                palavrasUnicas [i] = arrumarSinais(palavrasUnicas[i]);             
             }
             
+            //Armazenando palavras com e sem acento em um array separado
             int j = 0;
             for ( int i = 0 ; i < armazenarTodasPalavras.length ; i+=2, j++  ){                
                 armazenarTodasPalavras[i] = palavrasUnicas[j];                   
@@ -115,23 +113,20 @@ public class TrabalhoED2 {
             for ( int i = 1 ; i < armazenarTodasPalavras.length ; i+=2, j++ ){
                 armazenarTodasPalavras[i] = palavrasUnicasComSinal[j];                 
             }
-            j=0;
-            for (int i = 0 ; i < armazenarTodasPalavras.length ; i++){
-                //System.out.println(armazenarTodasPalavras[i]);
-            }
-           
+            
+            //Diferenciando palavras com e sem acento para organizacao e troca posterior
+            j=0;           
             for ( int i = 0 ; i < armazenarTodasPalavras.length ; i+=2 , j++ ){               
                 if ( ! palavrasUnicas[j].equals(palavrasUnicasComSinal[j]) ){
                     armazenarTodasPalavras[i] = armazenarTodasPalavras[i].concat("a");
                     palavrasUnicas[j] = palavrasUnicas[j].concat("a");
-                    //System.out.println(palavrasUnicas[j]);
                 }
             }           
                         
-            //aqui
+            //Chamada da funcao que ira arrumar em ordem alfabetica
             palavrasUnicas = selecao(palavrasUnicas);
             
-            //Trocando palavras com acento
+            //Trocando palavras com acento por suas verdadeiras palavras
             for ( int i = 0 ; i < armazenarTodasPalavras.length ; i+=2){
                 for ( int z = 0 ; z < palavrasUnicas.length ; z++){
                     j = i;
