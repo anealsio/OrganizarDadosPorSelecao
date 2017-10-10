@@ -35,9 +35,16 @@ public class TrabalhoED2 {
                     .replace("!","")
                     .replace("?","")
                     .replace("(","")
+                    .replace("’", "")
+                    .replace("'","")
+                    .replace("\"","")
                     .replace(")","")
                     .replace("\"","")
                     .replace("\'","")
+                    .replace("[","")
+                    .replace("]", "")
+                    .replace("“","")
+                    .replace("”","")
                     .replace("\\","");
     }
     
@@ -67,7 +74,7 @@ public class TrabalhoED2 {
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
-                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED1.txt"), "ISO-8859-1"))){
+                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED3.txt"), "ISO-8859-1"))){
             
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
@@ -150,6 +157,7 @@ public class TrabalhoED2 {
             escreverArquivoResposta.write(palavrasIguais+" palavras repetidas.");
             escreverArquivoResposta.newLine();
             int total = palavrasIguais + textoDividido.length;
+            escreverArquivoResposta.newLine();
             escreverArquivoResposta.write((palavrasIguais+textoDividido.length)+" palavras no total.");
             escreverArquivoResposta.write("Lista de palavras (Em ordem alfabetica): ");
             escreverArquivoResposta.newLine();
