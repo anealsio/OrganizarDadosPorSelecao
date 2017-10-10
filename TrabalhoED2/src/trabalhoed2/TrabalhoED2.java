@@ -67,7 +67,6 @@ public class TrabalhoED2 {
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
                 BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED2.txt"), "ISO-8859-1"))){
             
-            arquivoResposta.renameTo(lerArquivoPergunta);
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
             texto = texto.toLowerCase();
