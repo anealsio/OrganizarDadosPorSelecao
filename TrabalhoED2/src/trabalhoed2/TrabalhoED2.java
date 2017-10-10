@@ -146,10 +146,12 @@ public class TrabalhoED2 {
             }
             
             //Escrevendo no arquivo de Resposta:
-            escreverArquivoResposta.write("Texto com "+textoDividido.length+" palavras.");
+            escreverArquivoResposta.write("Texto com "+textoDividido.length+" palavras únicas.");
             escreverArquivoResposta.newLine();
             escreverArquivoResposta.write(palavrasIguais+" palavras repetidas.");
             escreverArquivoResposta.newLine();
+            int total = palavrasIguais + textoDividido.length;
+            escreverArquivoResposta.write((palavrasIguais+textoDividido.length)+" palavras no total.");
             escreverArquivoResposta.write("Lista de palavras (Em ordem alfabetica): ");
             escreverArquivoResposta.newLine();
             for(int i = 0; i < palavrasUnicas.length ; i++){               
