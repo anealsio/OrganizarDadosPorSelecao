@@ -34,6 +34,8 @@ public class TrabalhoED2 {
                     .replace(";","")
                     .replace("!","")
                     .replace("?","")
+                    .replace("(","")
+                    .replace(")","")
                     .replace("\"","")
                     .replace("\'","")
                     .replace("\\","");
