@@ -59,7 +59,7 @@ public class TrabalhoED2 {
     }
     
     public static void main(String[] args) {        
-        File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\RespostaTrabalhoED2.txt");
+        File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\Resposta.txt");
         String texto = new String();    
         ArrayList<String> palavras = new ArrayList<String>();
         
@@ -67,6 +67,7 @@ public class TrabalhoED2 {
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
                 BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED2.txt"), "ISO-8859-1"))){
             
+            arquivoResposta.renameTo(lerArquivoPergunta);
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
             texto = texto.toLowerCase();
