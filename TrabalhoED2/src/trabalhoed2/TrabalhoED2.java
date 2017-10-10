@@ -64,7 +64,6 @@ public class TrabalhoED2 {
     public static void main(String[] args) {        
         File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\RespostaTrabalhoED2.txt");
         String texto = new String();    
-        ArrayList<String> palavras = new ArrayList<String>();
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
