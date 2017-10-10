@@ -33,6 +33,7 @@ public class TrabalhoED2 {
                     .replace(":","")
                     .replace(";","")
                     .replace("!","")
+                    .replace("?","")
                     .replace("\"","")
                     .replace("\'","")
                     .replace("\\","");
@@ -59,13 +60,13 @@ public class TrabalhoED2 {
     }
     
     public static void main(String[] args) {        
-        File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\Resposta.txt");
+        File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\RespostaTrabalhoED2.txt");
         String texto = new String();    
         ArrayList<String> palavras = new ArrayList<String>();
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
-                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED2.txt"), "ISO-8859-1"))){
+                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED1.txt"), "ISO-8859-1"))){
             
             arquivoResposta.createNewFile();
             texto = lerArquivoPergunta.readLine();
