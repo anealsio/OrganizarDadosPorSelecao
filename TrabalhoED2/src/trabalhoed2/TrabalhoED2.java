@@ -5,14 +5,17 @@ import java.util.*;
 import java.util.logging.*;
 
 public class TrabalhoED2 {
-    
     public static String[] selecao(String[] palavrasUnicas ){
         int menorPalavra = 0;
         int palavraDaVez = 0;
-        while ( palavraDaVez != palavrasUnicas.length ) {  
+        while ( palavraDaVez < palavrasUnicas.length ) { 
+            
             menorPalavra = procurarMenor(palavrasUnicas,menorPalavra,palavraDaVez);
             trocarComMenor(palavrasUnicas,menorPalavra,palavraDaVez); 
-            palavraDaVez++;                
+            
+            menorPalavra=palavrasUnicas.length-1;
+            palavraDaVez++;
+            
         } 
         return palavrasUnicas;
     }
@@ -35,7 +38,7 @@ public class TrabalhoED2 {
                     .replace("!","")
                     .replace("?","")
                     .replace("(","")
-                    .replace("’", "")
+                    .replace("’","")
                     .replace("'","")
                     .replace("\"","")
                     .replace(")","")
@@ -43,6 +46,7 @@ public class TrabalhoED2 {
                     .replace("\'","")
                     .replace("[","")
                     .replace("]", "")
+                    .replace("  ", "")
                     .replace("“","")
                     .replace("”","")
                     .replace("\\","");
@@ -52,38 +56,37 @@ public class TrabalhoED2 {
         String palavraAux = new String();
         palavraAux = palavrasUnicas[menorPalavra];
         palavrasUnicas[menorPalavra] = palavrasUnicas[palavraDaVez];
-        palavrasUnicas[palavraDaVez] = palavraAux;        
-        //palavraDaVez++;               
+        palavrasUnicas[palavraDaVez] = palavraAux;               
     }
     
     public static int procurarMenor(String [] palavrasUnicas, int menorPalavra, int palavraDaVez){        
             for ( int i = palavraDaVez ; i < (palavrasUnicas.length-1) ; i ++ ){
                 if ( palavrasUnicas[i].compareTo( palavrasUnicas[menorPalavra] ) < 0 ){
-                    //System.out.println("entrou if: " + palavrasUnicas[i] + " e "+ palavrasUnicas[i+1]);
                     menorPalavra = i;                    
                 }
             }
-            
-            //System.out.println(menorPalavra);            
+                      
             return menorPalavra;
     }
     
-    public static void main(String[] args) {        
-        File arquivoResposta = new File("C:\\Users\\Neal\\Desktop\\RespostaTrabalhoED2.txt");
+    public static void main(String[] args) { 
+        
+        File arquivoResposta = new File("G:\\TRABALHO\\Resposta - TrabalhoED - 1.txt");
         String texto = new String();    
         
         
         try (BufferedWriter escreverArquivoResposta = new BufferedWriter ( new FileWriter(arquivoResposta) );
-                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("C:\\Users\\Neal\\Desktop\\TextoED3.txt"), "ISO-8859-1"))){
-            
+                BufferedReader lerArquivoPergunta = new BufferedReader(new InputStreamReader(new FileInputStream("G:\\TRABALHO\\TextoED1.txt"), "ISO-8859-1"))){
+                       
             arquivoResposta.createNewFile();
-            texto = lerArquivoPergunta.readLine();
+            texto = lerArquivoPergunta.readLine();        
+            
             texto = texto.toLowerCase();
             int palavrasIguais = 0;
             
             //arrumando texto e separando as palavras em um array
             texto = tirarPontuacao(texto);
-            String textoDividido[] = texto.split(" ");          
+            String textoDividido[] = texto.split(" "); 
             
             // tirar palavras repetidas
             String palavrasUnicas[] = new String[textoDividido.length];
@@ -131,7 +134,7 @@ public class TrabalhoED2 {
                     palavrasUnicas[j] = palavrasUnicas[j].concat("a");
                 }
             }           
-                        
+                      
             //Chamada da funcao que ira arrumar em ordem alfabetica
             palavrasUnicas = selecao(palavrasUnicas);
             
@@ -145,25 +148,24 @@ public class TrabalhoED2 {
                     }
                 }
             }
-            
+           
             //Escrevendo lista no terminal
             for(int i = 0 ; i < palavrasUnicas.length ; i++){
-                System.out.println(palavrasUnicas[i]);
+                //System.out.println(i + " - "+lista.get(i));
+                System.out.println(i + " - "+palavrasUnicas[i]);
             }
             
             //Escrevendo no arquivo de Resposta:
-            escreverArquivoResposta.write("Texto com "+textoDividido.length+" palavras únicas.");
+            escreverArquivoResposta.write("Texto com "+palavrasUnicas.length+" palavras únicas.");
             escreverArquivoResposta.newLine();
             escreverArquivoResposta.write(palavrasIguais+" palavras repetidas.");
             escreverArquivoResposta.newLine();
-            int total = palavrasIguais + textoDividido.length;
-            
-            escreverArquivoResposta.write((palavrasIguais+textoDividido.length)+" palavras no total.");
+            escreverArquivoResposta.write(textoDividido.length+" palavras no total.");
             escreverArquivoResposta.newLine();
             escreverArquivoResposta.write("Lista de palavras (Em ordem alfabetica): ");
             escreverArquivoResposta.newLine();
             for(int i = 0; i < palavrasUnicas.length ; i++){               
-                escreverArquivoResposta.write(palavrasUnicas[i]); 
+                escreverArquivoResposta.write(i+" - "+palavrasUnicas[i]); 
                 escreverArquivoResposta.newLine();
                 escreverArquivoResposta.flush();
             }
