@@ -157,8 +157,9 @@ public class TrabalhoED2 {
             escreverArquivoResposta.write(palavrasIguais+" palavras repetidas.");
             escreverArquivoResposta.newLine();
             int total = palavrasIguais + textoDividido.length;
-            escreverArquivoResposta.newLine();
+            
             escreverArquivoResposta.write((palavrasIguais+textoDividido.length)+" palavras no total.");
+            escreverArquivoResposta.newLine();
             escreverArquivoResposta.write("Lista de palavras (Em ordem alfabetica): ");
             escreverArquivoResposta.newLine();
             for(int i = 0; i < palavrasUnicas.length ; i++){               
